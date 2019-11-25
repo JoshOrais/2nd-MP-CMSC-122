@@ -19,4 +19,6 @@ public class BinarySearchTree
 			root.insert(key);
 		}
 	}
+
+	//sample text
 }

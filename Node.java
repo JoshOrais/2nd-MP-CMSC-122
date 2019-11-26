@@ -26,14 +26,6 @@ public class Node
 		this.value = value;
 	}
 
-	public ArrayList<int> getCombined(){
-		return combined;
-	}
-
-	public void setCombined(ArrayList<int> leftList, ArrayList<int> rightList){
-		combined = leftList.addAll(rightList);
-	}
-
 	public Node getRight(){
 		return right;
 	}

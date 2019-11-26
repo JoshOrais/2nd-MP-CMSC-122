@@ -10,7 +10,6 @@ public class CompressPanel extends Panel
 {
 	public CompressPanel(String action){
 		super(action);
-		//CompressPanel specific things
 	}
 
 	@Override
@@ -40,6 +39,7 @@ public class CompressPanel extends Panel
 		}else if(event.getSource() == actionButton){
 			
 			//compress image
+			//assign the compressed image file to 'image'
 			
 			fileManager.saveFile(image);
 		}

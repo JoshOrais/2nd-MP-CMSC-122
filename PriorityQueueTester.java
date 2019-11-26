@@ -6,24 +6,25 @@ public class PriorityQueueTester
 	private PriorityQueue queue;
 	private int choice;
 
-	public static void main(String[] args){
+	public PriorityQueueTester(){
+		System.out.println("PriorityQueueTester");
 		for(int i = 0; i < nodes.length; i++){
 			nodes[i] = new Node();
 			nodes[i].setKey(i);
 			nodes[i].setValue(i);
-			System.out.print("nodes[" + i + "] = " + nodes[i].getValue());
+			System.out.println("nodes[" + i + "] = " + nodes[i].getValue());
 		}
 
 		queue = new PriorityQueue(nodes);
 		Scanner scan = new Scanner(System.in);
 
-		while(choice != 0){
+		while(choice != 4){
 			System.out.println("\nPriority Queue Tester!\n");
 			System.out.println("Menu:");
 			System.out.println("\t1. Enqueue");
 			System.out.println("\t2. Dequeue");
 			System.out.println("\t3. isLastOne");
-			System.out.println("\t0. Exit");
+			System.out.println("\t4. Exit");
 			System.out.print("\nPlease choose a number: ");
 			choice = scan.nextInt();
 
@@ -51,4 +52,8 @@ public class PriorityQueueTester
 			}
 		}
 	}	
+
+	public static void main(String[] args){
+		new PriorityQueueTester();
+	}
 }

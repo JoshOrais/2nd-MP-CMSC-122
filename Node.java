@@ -49,12 +49,12 @@ public class Node
 	}
 
 	public void setBitString(){
-		if(){
+		/*if(){
 
 		}
 		else{
 
-		}
+		}*/
 	}
 
 	public ArrayList<Node> inOrder(ArrayList<Node> nodes){

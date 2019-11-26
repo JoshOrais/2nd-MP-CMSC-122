@@ -13,15 +13,15 @@ public class Heap
 	}
 
 	public void insert(Node newNode){
-		nodes[++size] = newNode;
-		heapifyBottomUp(nodes, size, size-1);
+		nodes[++size-1] = newNode;
+		heapifyBottomUp(size, size-1);
 	}
 
 	public Node remove(){
-		Node root = nodes[0]
+		Node root = nodes[0];
 		if(size > 0){
-			switchNodes(0,nodes.length-1);
-			heapifyTopDown(nodes, --size, 0);
+			switchNodes(0,--size);
+			heapifyTopDown(size, 0);
 		} else{
 			root = null;
 		}
@@ -29,33 +29,33 @@ public class Heap
 		return root;
 	}
 
-	private void heapifyTopDown(Node[] nodes, int size, int i){
+	private void heapifyTopDown(int size, int i){
 		int min = i;
 		int left = 2*i + 1;
-		int right = 2**i + 2;
+		int right = 2*i + 2;
 
-		if(left < size && nodes[left].getValue() > nodes[min].getValue()){
+		if(left < size && nodes[left].getValue() < nodes[min].getValue()){
 			min = left;
 		}
 
-		if(right < size && nodes[right].getValue() > nodes[min].getValue()){
+		if(right < size && nodes[right].getValue() < nodes[min].getValue()){
 			min = right;
 		}
 
 		if(min != i){
 			switchNodes(i, min);
 
-			heapifyTopDown(nodes, size, min);
+			heapifyTopDown(size, min);
 		}
 	}
 
-	private void heapifyBottomUp(Nodes[] nodes, int size, int i){
+	private void heapifyBottomUp(int size, int i){
 		int parent = (i-1)/2;
 
 		if(i > 0){
 			if(nodes[i].getValue() < nodes[parent].getValue()){
 				switchNodes(i, parent);
-				heapifyBottomUp(nodes, size, parent);
+				heapifyBottomUp(size, parent);
 			}
 		}
 	}

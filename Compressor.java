@@ -1,15 +1,16 @@
 public class Compressor{
-    private ImgScanner imgScan;
-    private HuffmanTree tree;
+    private ImgScanner imgScan = new ImgScanner();
+    private HuffmanTree tree = new HuffmanTree();
+    private Mapping map = new Mapping();
 
-    public Node compress(File file){
-    	imgScan = new ImgScanner();
-    	tree = new HuffmanTree();
-    	
+    public Node compress(File file){    	
         Node[] nodeArr = imgScan.scan(file);
         Node root = tree.generate(nodeArr);
 
         int[][] pixels = imgScan.getPixels();
+
+        map.writeTree();
+        map.writeCompressed();
 
         return root;
     }

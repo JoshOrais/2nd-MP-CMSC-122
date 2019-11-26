@@ -16,6 +16,7 @@ public class DecompressPanel extends Panel
 	@Override
 	public void actionPerformed(ActionEvent event){
 		fileManager = new FileManager();
+		String sizeType = "KB";
 
 		if(event.getSource() == fileButton){
 			image = fileManager.chooseFile();
@@ -25,8 +26,16 @@ public class DecompressPanel extends Panel
 					imageIcon = ImageIO.read(image);
 				} catch(IOException e){}
 
+				double size = image.length()/1024;
+				if(size >= 1024){
+					size = size/1024;
+					sizeType = "MB";
+				}
+				sizeLabel.setText("size: " + Double.toString(size) + " " + sizeType);
 				imageLabel.setIcon(new ImageIcon(imageIcon));
 				imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+				scroller.setViewportView(imageLabel);
+				partPanel[1].add(scroller, BorderLayout.CENTER);
 			}
 			//load compressed image
 

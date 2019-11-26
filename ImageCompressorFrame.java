@@ -8,7 +8,7 @@ public class ImageCompressorFrame extends JFrame
 	private DecompressPanel decompressPanel;
 
 	public ImageCompressorFrame(){
-		super("Image Compressor");
+		super("Image Processor");
 		setSize(1000, 700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -22,5 +22,9 @@ public class ImageCompressorFrame extends JFrame
 		add(decompressPanel);
 
 		setVisible(true);
+	}
+
+	public static void main(String[] args){
+		new ImageCompressorFrame();
 	}
 }

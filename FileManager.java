@@ -12,7 +12,7 @@ public class FileManager{
 
 		if(returnValue == JFileChooser.APPROVE_OPTION){
 			File selectedFile = fileManager.getSelectedFile();
-			System.out.println(selectedFile.getAbsolutePath());
+			//System.out.println(selectedFile.getAbsolutePath());
 			return selectedFile;
 		}
 		return null;

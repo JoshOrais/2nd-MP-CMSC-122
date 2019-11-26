@@ -8,8 +8,9 @@ public class Node
 	private int value;
 	private Node right;
 	private Node left;
+	private ArrayList<Integer> combined = new ArrayList<Integer>();
 	private long bitString;
-	private ArrayList<int> combined = new ArrayList<int>();
+
 
 	public int getKey(){
 		return key;
@@ -47,13 +48,13 @@ public class Node
 		return bitString;
 	}
 
-	public void appendBitString(int x){
-		if(x==0){
-			bitString<<1
+	public void setBitString(){
+		/*if(){
+
 		}
 		else{
-			(bitString<<1)|1
-		}
+
+		}*/
 	}
 
 	public ArrayList<Node> inOrder(ArrayList<Node> nodes){

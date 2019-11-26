@@ -10,7 +10,6 @@ public class DecompressPanel extends Panel
 {
 	public DecompressPanel(String action){
 		super(action);
-		//DecompressPanel specific things
 	}
 
 	@Override

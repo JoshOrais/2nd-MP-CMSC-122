@@ -8,7 +8,7 @@ public class Node
 	private int value;
 	private Node right;
 	private Node left;
-	private ArrayList<int> combined = new ArrayList<int>();
+	private ArrayList<Integer> combined = new ArrayList<Integer>();
 
 	public int getKey(){
 		return key;

@@ -1,31 +1,22 @@
 public class PriorityQueue{
-	private LinkList list = new LinkList();
+	private Heap heap;
 
 	public PriorityQueue(Node[] nodes){
-		for(int i = nodes.length-1; i >= 0; i--){
-			list.createLink(nodes[i]);
-		}
+		heap = new Heap(nodes);
 	}
 
 	public void enqueue(Node node){
-		list.insert(node);
+		heap.insert(node);
 	}
 
 	public Node dequeue(){
-		if(list.seeTop() != null){
-			return list.getTop().getNode();
-		}
-		return null;
+		return heap.remove();
 	}
 
 	public boolean isLastOne(){
-		try{
-			if(list.seeTop().getNext() == null){
-				return true;
-			}
-			return false;
-		}catch(NullPointerException ex){
-			return false;
+		if(heap.getSize() == 1){
+			return true;
 		}
+		return false;
 	}
 }

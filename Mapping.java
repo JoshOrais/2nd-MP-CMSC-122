@@ -6,13 +6,16 @@ public class Mapping{
             //write key and long
         }
 
-        Node(root.getLeft(), num<<1);
-        Node(root.getRight(), (num<<1)|1);        
+        writeTree(root.getLeft(), num<<1);
+        writeTree(root.getRight(), (num<<1)|1);        
     }
 
     public void writeCompressed(int[][] pixels){
         int row = pixels.length();
         int column = pixels[0].length();
+
+        //write binary representation of row and column
+        //joshua dako otin
 
         for(int i=0; i<row; i++){
             for(int j=0; j<column; j++){
@@ -20,5 +23,9 @@ public class Mapping{
                 //write binary representation
             }
         }
+    }
+
+    private void writer(){
+
     }
 }

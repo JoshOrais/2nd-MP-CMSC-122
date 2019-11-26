@@ -14,6 +14,7 @@ public class HuffmanTree{
 
     private Node combine(Node a, Node b){
         Node node = new Node();
+        a.setBitString(left)
         node.setValue(a.getValue() + b.getValue());
         node.setLeft(a);
         node.setRight(b);

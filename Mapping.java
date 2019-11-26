@@ -6,8 +6,8 @@ public class Mapping{
             //write key and long
         }
 
-        Node(root.getLeft(), num<<);
-        Node(root.getRight(), num>>|1);        
+        Node(root.getLeft(), num<<1);
+        Node(root.getRight(), (num<<1)|1);        
     }
 
     public void writeCompressed(int[][] pixels){

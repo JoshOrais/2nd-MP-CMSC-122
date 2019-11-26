@@ -6,17 +6,20 @@ import java.awt.image.*;
 import javax.imageio.*;
 import java.io.*;
 
-public class Panel extends JPanel implements ActionListener
+public abstract class Panel extends JPanel implements ActionListener
 {
 	protected JButton fileButton, actionButton;
-	private JPanel[] partPanel = new JPanel[3];
-	protected JLabel imageLabel;
+	protected JPanel[] partPanel = new JPanel[3];
+	protected JLabel imageLabel, sizeLabel, blank;
+	protected JScrollPane scroller;
 	protected BufferedImage imageIcon, defaultImage;
 	protected File image;
 	protected FileManager fileManager;
 
 	public Panel(String action){
 		setLayout(new BorderLayout());
+		scroller = new JScrollPane();
+		scroller.getViewport().setBackground(Color.BLACK);
 
 		try{
 			defaultImage = ImageIO.read(new File("DefaultImage.png"));
@@ -39,11 +42,18 @@ public class Panel extends JPanel implements ActionListener
 					fileButton.setBackground(Color.LIGHT_GRAY);
 					fileButton.setForeground(Color.BLACK);
 					fileButton.setBorder(border);
+					sizeLabel = new JLabel();
+					sizeLabel.setBackground(Color.GRAY);
+					sizeLabel.setFont(font);
+					blank = new JLabel("                                 ");
+					blank.setBackground(Color.GRAY);
 					partPanel[i].setLayout(new FlowLayout(FlowLayout.LEFT, 10, 35));
 					partPanel[i].setPreferredSize(new Dimension(500,100));
 					partPanel[i].setBackground(Color.GRAY);
 					add(partPanel[i], BorderLayout.NORTH);
 					partPanel[i].add(fileButton);
+					partPanel[i].add(blank);
+					partPanel[i].add(sizeLabel);
 					break;
 				case 1:
 					imageLabel = new JLabel();
@@ -73,5 +83,5 @@ public class Panel extends JPanel implements ActionListener
 		setVisible(true);
 	}
 
-	public void actionPerformed(ActionEvent event){}
+	public abstract void actionPerformed(ActionEvent event);
 }

@@ -47,12 +47,12 @@ public class Node
 		return bitString;
 	}
 
-	public void setBitString(){
-		if(){
-
+	public void appendBitString(int x){
+		if(x==0){
+			bitString<<1
 		}
 		else{
-
+			(bitString<<1)|1
 		}
 	}
 

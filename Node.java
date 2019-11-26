@@ -9,6 +9,8 @@ public class Node
 	private Node right;
 	private Node left;
 	private ArrayList<Integer> combined = new ArrayList<Integer>();
+	private long bitString;
+
 
 	public int getKey(){
 		return key;
@@ -40,6 +42,19 @@ public class Node
 
 	public void setLeft(Node left){
 		this.left = left;
+	}
+
+	public long getBitString(){
+		return bitString;
+	}
+
+	public void setBitString(){
+		if(){
+
+		}
+		else{
+
+		}
 	}
 
 	public ArrayList<Node> inOrder(ArrayList<Node> nodes){

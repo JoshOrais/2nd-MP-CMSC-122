@@ -9,8 +9,8 @@ public class Compressor{
 
         int[][] pixels = imgScan.getPixels();
 
-        map.writeTree();
-        map.writeCompressed();
+        map.writeTree(root);
+        map.writeCompressed(pixels);
 
         return root;
     }

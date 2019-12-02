@@ -1,5 +1,5 @@
 public class WriteCompressed{
-    private Mapping map = new Mapping();
+    /*private Mapping map = new Mapping();
 
     public WriteCompressed(Node[] uniqueArr, Node root, int[][] pixelArr){
         map.createPath(root, 0);
@@ -17,5 +17,5 @@ public class WriteCompressed{
         }
     }
 
-    private 
+    private*/
 }

@@ -17,7 +17,8 @@ public class WriteCompressed{
         path.create(root);
         Node[] pathArr = sort.mergeSort(path.getPathArray());
 
-        System.out.println("All pixels: " + (pixelArr.length * pixelArr[0].length));
+        System.out.print("Row: " + pixelArr.length);
+        System.out.println(" Column: " + pixelArr[0].length);
         System.out.println("Unique nodes: " + uniqueArr.length);
         System.out.println("Paths: " + pathArr.length);
 
@@ -30,6 +31,5 @@ public class WriteCompressed{
                 //byte bitString = Byte.parseByte(pathString);
             }
         }
-
     }
 }

@@ -4,8 +4,8 @@ public class Node
 {
 	private int key;
 	private int value;
-	private Node right;
-	private Node left;
+	private Node right = null;
+	private Node left = null;
 	private String path;
 
 

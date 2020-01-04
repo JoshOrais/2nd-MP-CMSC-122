@@ -11,7 +11,7 @@ public class Compressor{
 
         Node root = tree.generate(uniqueArr);
 
-        write = new WriteCompressed(uniqueArr, root, pixelsArr);
+        //write = new WriteCompressed(uniqueArr, root, pixelsArr);
 
         return root;
     }

@@ -1,6 +1,4 @@
-import java.util.Scanner;
 import java.util.*;
-import java.util.Arrays;
 
 public class Node
 {
@@ -8,8 +6,7 @@ public class Node
 	private int value;
 	private Node right;
 	private Node left;
-	private ArrayList<Integer> combined = new ArrayList<Integer>();
-	private long bitString;
+	private String path;
 
 
 	public int getKey(){
@@ -44,17 +41,12 @@ public class Node
 		this.left = left;
 	}
 
-	public long getBitString(){
-		return bitString;
+	public String getPath(){
+		return path;
 	}
 
-	public void setBitString(){
-		/*if(){
-
-		}
-		else{
-
-		}*/
+	public void setPath(String path){
+		this.path = path;
 	}
 
 	public ArrayList<Node> inOrder(ArrayList<Node> nodes){

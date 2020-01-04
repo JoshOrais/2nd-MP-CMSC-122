@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Tester{
     private Compressor compressor = new Compressor();
-    private String fileName = "1.png", line;
+    private String fileName = "sample.png";
 	private File file;
     private Node node = new Node();
 
@@ -10,8 +10,8 @@ public class Tester{
         file = new File(fileName);
         node = compressor.compress(file);
 
+        System.out.println(fileName);
         System.out.println("Value: " + node.getValue() + " Left: " + node.getLeft().getValue() + " Right: " + node.getRight().getValue());
-        System.out.println("Key: " + node.getKey() + " Left: " + node.getLeft().getKey() + " Right: " + node.getRight().getKey());
     }
 
     public static void main(String [] args){

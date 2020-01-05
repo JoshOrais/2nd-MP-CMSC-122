@@ -9,10 +9,14 @@ public class Tester{
     public Tester(){
         file = new File(fileName);
         node = compressor.compress(file);
+
+        //PRINT PREORDER
+        System.out.println("PRE-ORDER TRAVESAL: ");
         printPreorder(node);
 
-        System.out.println("\n" + fileName);
-        System.out.println("Value: " + node.getValue() + " Left: " + node.getLeft().getValue() + " Right: " + node.getRight().getValue());
+        //READ FILENAME AND CHECK TOTAL VALUE
+        System.out.println("\n\nFILE: " + fileName);
+        System.out.println("TOTAL VALUE: " + node.getValue() + " LEFT: " + node.getLeft().getValue() + " RIGHT: " + node.getRight().getValue());
     }
 
     public void printPreorder(Node node) 
@@ -20,13 +24,8 @@ public class Tester{
         if (node == null) 
             return; 
   
-        /* first print data of node */
         System.out.print(node.getValue() + " "); 
-  
-        /* then recur on left sutree */
         printPreorder(node.getLeft()); 
-  
-        /* now recur on right subtree */
         printPreorder(node.getRight()); 
     }
     

@@ -3,38 +3,55 @@ import java.util.*;
 public class CreatePath{
     private String path = "";
     private ArrayList<Node> pathList = new ArrayList<Node>();
-    private int cntr = 0;
-    private int leftCntr = 0;
-    private int rightCntr = 0;
+    private int flag;
 
     public void create(Node node){
-        //System.out.println(node.getValue());
+        System.out.println("\nStart Value: " + node.getValue());
 
         if((node.getLeft() == null) || (node.getRight() == null)){
             node.setPath(path);
             pathList.add(node);
-            cntr++;
-            //System.out.println("end");
+
+            if(flag == 1){
+                if(path.length() < 2){
+                    path = "";
+                    System.out.println("reset");
+                }
+                else{
+                    path = path.substring(0, path.length()-2);
+                }
+            }
+            if(flag == 0){
+                if(path.length() < 3){
+                    path = "";
+                    System.out.println("reset");
+                }
+                path = path.substring(0, path.length()-3);
+            }
+            System.out.println("end\n");
             return;
         }
 
         if(node.getLeft() != null){
+            flag = 1;
             path = path + "1";
-            leftCntr++;
-            //System.out.println("left");
+            System.out.println("left");
+            System.out.println("bitString: " + path);
             create(node.getLeft());
         }
         if(node.getRight() != null){
+            flag = 2;
             path = path + "0";
-            rightCntr++;
-            //System.out.println("right");
+            System.out.println("right");
+            System.out.println("bitString: " + path);
             create(node.getRight());
         }
     }
 
     public Node[] getPathArray(){
-        System.out.println("\nCounter: " + cntr + " Left: " + leftCntr + " Right: " + rightCntr);
+        //System.out.println("\nCounter: " + cntr + " Left: " + leftCntr + " Right: " + rightCntr);
         Node[] pathArr = pathList.toArray(new Node[pathList.size()]);
+
         return pathArr; 
     }
 }

@@ -3,7 +3,7 @@ import java.io.*;
 public class Compressor{
     private ImgScanner imgScan = new ImgScanner();
     private HuffmanTree tree = new HuffmanTree();
-    private WriteCompressed write;
+    private WriteCompressed write = new WriteCompressed();
 
     public Node compress(File file){    	
         Node[] uniqueArr = imgScan.scan(file);
@@ -11,7 +11,7 @@ public class Compressor{
 
         Node root = tree.generate(uniqueArr);
 
-        //write = new WriteCompressed(uniqueArr, root, pixelsArr);
+        write.write(uniqueArr, root, pixelsArr);
 
         return root;
     }

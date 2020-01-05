@@ -7,6 +7,7 @@ public class Node
 	private Node right = null;
 	private Node left = null;
 	private String path;
+	public int leaf = 0;
 
 
 	public int getKey(){

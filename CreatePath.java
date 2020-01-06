@@ -6,7 +6,7 @@ public class CreatePath{
     private int flag;
 
     public void create(Node node){
-        System.out.println("\nStart Value: " + node.getValue());
+        //System.out.println("\nStart Value: " + node.getValue());
 
         if((node.getLeft() == null) || (node.getRight() == null)){
             node.setPath(path);
@@ -15,35 +15,35 @@ public class CreatePath{
             if(flag == 1){
                 if(path.length() < 2){
                     path = "";
-                    System.out.println("reset");
+                    //System.out.println("reset");
                 }
                 else{
-                    path = path.substring(0, path.length()-2);
+                    path = path.substring(0, path.length()-1);
                 }
             }
             if(flag == 0){
                 if(path.length() < 3){
                     path = "";
-                    System.out.println("reset");
+                    //System.out.println("reset");
                 }
-                path = path.substring(0, path.length()-3);
+                path = path.substring(0, path.length()-2);
             }
-            System.out.println("end\n");
+            //System.out.println("end\n");
             return;
         }
 
         if(node.getLeft() != null){
             flag = 1;
             path = path + "1";
-            System.out.println("left");
-            System.out.println("bitString: " + path);
+            //System.out.println("left");
+            //System.out.println("bitString: " + path);
             create(node.getLeft());
         }
         if(node.getRight() != null){
             flag = 2;
             path = path + "0";
-            System.out.println("right");
-            System.out.println("bitString: " + path);
+            //System.out.println("right");
+            //System.out.println("bitString: " + path);
             create(node.getRight());
         }
     }

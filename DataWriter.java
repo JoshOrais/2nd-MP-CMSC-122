@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class DataWriter{
-    private CreatePath path = new CreatePath();
+    private CreatePathSample path = new CreatePathSample();
     private MergeSort sort = new MergeSort();
     private BinarySearch search = new BinarySearch();
     private String extra = "";
@@ -13,14 +13,13 @@ public class DataWriter{
         try {
 			file = new File("COMPRESSED.data");
             file.delete();
-            //System.out.println("File Deleted");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
 
     public void writer(Node[] uniqueArr, int[][] pixelArr, Node root){
-        path.create(root);
+        path.create(root, 0, "");
         Node[] pathArr = sort.mergeSort(path.getPathArray(), "pixel");
         
         //READ CONTENTS OF PATH ARRAY
@@ -37,14 +36,8 @@ public class DataWriter{
 
         for(int i=0; i<row; i++){
             for(int j=0; j<col; j++){
-                String pathString = search.binSearch(pixelArr[i][j], pathArr);
-                //READ PATH FOUND
-                //System.out.println("pixel: " + pixelArr[i][j] + " \tString: " + pathString);
-                
+                String pathString = search.binSearch(pixelArr[i][j], pathArr);                
                 pathString = extra.concat(pathString);
-                
-                //READ COMBINED PATHSTRING
-                //System.out.println("Combined: " + pathString + "\tLength: " + pathString.length());
 
                 while(pathString.length()  >= 8){
                     WriteToFile(pathString.substring(0, 8));
@@ -68,6 +61,8 @@ public class DataWriter{
             }
             WriteToFile(extra);
         }
+
+        System.out.println("File written successfully.");
     }
 
     public void WriteToFile(String str){
@@ -93,7 +88,6 @@ public class DataWriter{
 			fileOutputStream.write((byte)(num & 0xff));
 			fileOutputStream.flush();
 			fileOutputStream.close();
-			//System.out.println("File written successfully.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

@@ -26,7 +26,9 @@ public class CreatePath{
                     path = "";
                     //System.out.println("reset");
                 }
-                path = path.substring(0, path.length()-2);
+                else{
+                    path = path.substring(0, path.length()-2);
+                }
             }
             //System.out.println("end\n");
             return;

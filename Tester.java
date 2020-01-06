@@ -2,21 +2,21 @@ import java.io.*;
 
 public class Tester{
     private Compressor compressor = new Compressor();
-    private String fileName = "2.jpg";
+    private String fileName = "5.png";
 	private File file;
-    private Node node = new Node();
+    private Node root = new Node();
 
     public Tester(){
         file = new File(fileName);
-        node = compressor.compress(file);
+        root = compressor.compress(file);
 
         //PRINT PREORDER
         //System.out.println("PRE-ORDER TRAVESAL: ");
-        //printPreorder(node);
+        //printPreorder(root);
 
         //READ FILENAME AND CHECK TOTAL VALUE
-        System.out.println("\n\nFILE: " + fileName);
-        //System.out.println("TOTAL VALUE: " + node.getValue() + " LEFT: " + node.getLeft().getValue() + " RIGHT: " + node.getRight().getValue());
+        System.out.println("FILE: " + fileName);
+        //System.out.println("TOTAL VALUE: " + root.getValue() + " LEFT: " + root.getLeft().getValue() + " RIGHT: " + root.getRight().getValue());
     }
 
     public void printPreorder(Node node) 

@@ -22,24 +22,28 @@ public class DataWriter{
         path.create(root, 0, "");
         Node[] pathArr = sort.mergeSort(path.getPathArray(), "pixel");
         
+        //READ FOR CHECKING
+        System.out.println("ROW: " + pixelArr.length + " \t\tCOLUMN: " + pixelArr[0].length);
+        System.out.println("UNIQUE NODES: " + uniqueArr.length + " \tNO.OF PATHS: " + pathArr.length + "\n");
+
         //READ CONTENTS OF PATH ARRAY
         //for(int i=0; i<pathArr.length; i++){
         //    System.out.println("Path: " + pathArr[i].getPath() + " \tValue: " + pathArr[i].getValue() + " \tPixel: " + pathArr[i].getKey());
         //}
-
-        //READ FOR CHECKING
-        //System.out.println("ROW: " + pixelArr.length + " \t\tCOLUMN: " + pixelArr[0].length);
-        //System.out.println("UNIQUE NODES: " + uniqueArr.length + " \tNO.OF PATHS: " + pathArr.length + "\n");
 
         int row = pixelArr.length;
         int col = pixelArr[0].length;
 
         for(int i=0; i<row; i++){
             for(int j=0; j<col; j++){
+                //CHECK UPDATES
+                System.out.println("check \t" + i + " \t" + j);
                 String pathString = search.binSearch(pixelArr[i][j], pathArr);                
                 pathString = extra.concat(pathString);
 
                 while(pathString.length()  >= 8){
+                    //CHECK UPDATES
+                    System.out.println("\tprocessing substring");
                     WriteToFile(pathString.substring(0, 8));
                     if(pathString.length() > 8){
                         pathString = pathString.substring(8, (pathString.length()));

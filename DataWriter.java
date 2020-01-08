@@ -15,12 +15,32 @@ public class DataWriter{
             file.delete();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+        }
     }
 
     public void writer(Node[] uniqueArr, int[][] pixelArr, Node root){
+        int row = pixelArr.length;
+        int col = pixelArr[0].length;
+        
+        try {
+			file = new File("COMPRESSED.data");
+			fileOutputStream = new FileOutputStream(file, true);
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			//fileOutputStream.write((byte)(num & 0xff));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+        //CHECK IF FILE IS CREATED
+        System.out.println("File created");
+
         path.create(root, 0, "");
         Node[] pathArr = sort.mergeSort(path.getPathArray(), "pixel");
+
+        //CHECK IF PATH ARRAY IS CREATED
+        System.out.println("Path Array Created");
         
         //READ FOR CHECKING
         System.out.println("ROW: " + pixelArr.length + " \t\tCOLUMN: " + pixelArr[0].length);
@@ -31,19 +51,16 @@ public class DataWriter{
         //    System.out.println("Path: " + pathArr[i].getPath() + " \tValue: " + pathArr[i].getValue() + " \tPixel: " + pathArr[i].getKey());
         //}
 
-        int row = pixelArr.length;
-        int col = pixelArr[0].length;
-
         for(int i=0; i<row; i++){
             for(int j=0; j<col; j++){
                 //CHECK UPDATES
-                System.out.println("check \t" + i + " \t" + j);
+                //System.out.println("check \t" + i + " \t" + j);
                 String pathString = search.binSearch(pixelArr[i][j], pathArr);                
                 pathString = extra.concat(pathString);
 
                 while(pathString.length()  >= 8){
                     //CHECK UPDATES
-                    System.out.println("\tprocessing substring");
+                    //System.out.println("\tprocessing substring");
                     WriteToFile(pathString.substring(0, 8));
                     if(pathString.length() > 8){
                         pathString = pathString.substring(8, (pathString.length()));
@@ -66,6 +83,13 @@ public class DataWriter{
             WriteToFile(extra);
         }
 
+        try {
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        //CHECK IF DONE
         System.out.println("File written successfully.");
     }
 
@@ -83,26 +107,12 @@ public class DataWriter{
             }
         }
 
-		try {
-			file = new File("COMPRESSED.data");
-			fileOutputStream = new FileOutputStream(file, true);
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-			fileOutputStream.write((byte)(num & 0xff));
-			fileOutputStream.flush();
-			fileOutputStream.close();
-		} catch (Exception e) {
+        try{
+            fileOutputStream.write((byte)(num & 0xff));
+        } catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (fileOutputStream != null) {
-					fileOutputStream.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
+		
     }
     
 }

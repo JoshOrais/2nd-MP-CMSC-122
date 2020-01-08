@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Tester{
     private Compressor compressor = new Compressor();
-    private String fileName = "5.png";
+    private String fileName = "2.bmp";
 	private File file;
     private Node root = new Node();
 

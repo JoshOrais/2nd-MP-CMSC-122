@@ -2,6 +2,7 @@ import java.io.*;
 
 public class Tester{
     private Compressor compressor = new Compressor();
+    private Decompressor decompressor = new Decompressor();
     private String fileName = "RAY.BMP";
 	private File file;
     private Node root = new Node();
@@ -14,9 +15,9 @@ public class Tester{
         //System.out.println("PRE-ORDER TRAVESAL: ");
         //printPreorder(root);
 
-        //READ FILENAME AND CHECK TOTAL VALUE
         System.out.println("FILE: " + fileName);
-        //System.out.println("TOTAL VALUE: " + root.getValue() + " LEFT: " + root.getLeft().getValue() + " RIGHT: " + root.getRight().getValue());
+
+        decompressor.decompress(file, root);
     }
 
     public void printPreorder(Node node) 

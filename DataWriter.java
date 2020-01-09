@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class DataWriter{
-    private CreatePathSample path = new CreatePathSample();
+    private CreatePath path = new CreatePath();
     private MergeSort sort = new MergeSort();
     private BinarySearch search = new BinarySearch();
     private String extra = "";
@@ -27,8 +27,17 @@ public class DataWriter{
 			fileOutputStream = new FileOutputStream(file, true);
 			if (!file.exists()) {
 				file.createNewFile();
-			}
-			//fileOutputStream.write((byte)(num & 0xff));
+            }
+            
+            fileOutputStream.write((byte)(row >>> 24));
+            fileOutputStream.write((byte)(row >>> 16));
+            fileOutputStream.write((byte)(row >>> 8));
+            fileOutputStream.write((byte)row);
+
+            fileOutputStream.write((byte)(col >>> 24));
+            fileOutputStream.write((byte)(col >>> 16));
+            fileOutputStream.write((byte)(col >>> 8));
+            fileOutputStream.write((byte)col);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

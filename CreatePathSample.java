@@ -12,22 +12,22 @@ public class CreatePathSample{
             node.setPath(path);
             pathList.add(node);
 
-            if(flag == 1){
-                if(path.length() < 2){
-                    path = "";
-                }
-                else{
-                    path = path.substring(0, path.length()-1);
-                }
-            }
-            else if(flag == 0){
-                if(path.length() < 3){
-                    path = "";
-                }
-                else{
-                    path = path.substring(0, path.length()-2);
-                }
-            }
+            // if(flag == 1){
+            //     if(path.length() < 2){
+            //         path = "";
+            //     }
+            //     else{
+            //         path = path.substring(0, path.length()-1);
+            //     }
+            // }
+            // else if(flag == 0){
+            //     if(path.length() < 3){
+            //         path = "";
+            //     }
+            //     else{
+            //         path = path.substring(0, path.length()-2);
+            //     }
+            // }
         }
   
         create(node.getLeft(), 1, path+"1");

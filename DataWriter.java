@@ -47,9 +47,9 @@ public class DataWriter{
         System.out.println("UNIQUE NODES: " + uniqueArr.length + " \tNO.OF PATHS: " + pathArr.length + "\n");
 
         //READ CONTENTS OF PATH ARRAY
-        //for(int i=0; i<pathArr.length; i++){
-        //    System.out.println("Path: " + pathArr[i].getPath() + " \tValue: " + pathArr[i].getValue() + " \tPixel: " + pathArr[i].getKey());
-        //}
+        // for(int i=0; i<pathArr.length; i++){
+        //    System.out.println("Path: " + pathArr[i].getPath() + " \tNumber of pixels: " + pathArr[i].getValue() + " \tPixel Value: " + pathArr[i].getKey());
+        // }
 
         for(int i=0; i<row; i++){
             for(int j=0; j<col; j++){
@@ -57,6 +57,8 @@ public class DataWriter{
                 //System.out.println("check \t" + i + " \t" + j);
                 String pathString = search.binSearch(pixelArr[i][j], pathArr);                
                 pathString = extra.concat(pathString);
+
+                //System.out.println(pathString);
 
                 while(pathString.length()  >= 8){
                     //CHECK UPDATES

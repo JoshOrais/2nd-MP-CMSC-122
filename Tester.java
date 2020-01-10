@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class Tester{
     private Compressor compressor = new Compressor();
@@ -6,8 +7,13 @@ public class Tester{
     private String fileName = "RAY.BMP";
 	private File file;
     private Node root = new Node();
+    private Scanner scan = new Scanner(System.in);
 
     public Tester(){
+        //START COMPRESS
+        System.out.println("Press to compress");
+        scan.nextInt();
+
         file = new File(fileName);
         root = compressor.compress(file);
 
@@ -17,7 +23,11 @@ public class Tester{
 
         System.out.println("FILE: " + fileName);
 
-        decompressor.decompress(file, root);
+        //START DECOMPRESS
+        System.out.println("Press to decompress");
+        scan.nextInt();
+
+        decompressor.decompress(fileName, root);
     }
 
     public void printPreorder(Node node) 

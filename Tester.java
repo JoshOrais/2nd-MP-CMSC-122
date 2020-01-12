@@ -11,7 +11,7 @@ public class Tester{
 
     public Tester(){
         //START COMPRESS
-        System.out.println("Press to compress");
+        System.out.print("START COMPRESSION ");
         scan.nextInt();
 
         file = new File(fileName);
@@ -24,10 +24,10 @@ public class Tester{
         System.out.println("FILE: " + fileName);
 
         //START DECOMPRESS
-        System.out.println("Press to decompress");
+        System.out.print("\nSTART DECOMPRESSION ");
         scan.nextInt();
 
-        decompressor.decompress(fileName, root);
+        decompressor.decompress("COMPRESSED.data", root);
     }
 
     public void printPreorder(Node node) 

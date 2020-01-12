@@ -8,6 +8,7 @@ public class DataWriter{
     private String extra = "";
     private File file;
     private FileOutputStream fileOutputStream;
+    private int writeCounter = 0;
 
     public DataWriter(){
         try {
@@ -28,22 +29,28 @@ public class DataWriter{
 			if (!file.exists()) {
 				file.createNewFile();
             }
-            
-            fileOutputStream.write((byte)(row >>> 24));
-            fileOutputStream.write((byte)(row >>> 16));
-            fileOutputStream.write((byte)(row >>> 8));
-            fileOutputStream.write((byte)row);
 
-            fileOutputStream.write((byte)(col >>> 24));
-            fileOutputStream.write((byte)(col >>> 16));
-            fileOutputStream.write((byte)(col >>> 8));
-            fileOutputStream.write((byte)col);
+            // System.out.print("\n");
+            for(int i=3; i>=0; i--){
+                fileOutputStream.write((byte)(row >>> (8*i)));
+                //CHECK ROW BITSTRING
+                // String s1 = String.format("%8s", Integer.toBinaryString(((byte)(row >>> (8*i))) & 0xFF)).replace(' ', '0');
+                // System.out.println(s1);
+            }
+            for(int i=3; i>=0; i--){
+                fileOutputStream.write((byte)(col >>> (8*i)));
+                //CHECK COLUMN BITSTRING
+                // String s1 = String.format("%8s", Integer.toBinaryString(((byte)(col >>> (8*i))) & 0xFF)).replace(' ', '0');
+                // System.out.println(s1);
+            }
+            // System.out.print("\n");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
         
         //CHECK IF FILE IS CREATED
-        System.out.println("File created");
+        System.out.println("Dimensions Written");
 
         path.create(root, 0, "");
         Node[] pathArr = sort.mergeSort(path.getPathArray(), "pixel");
@@ -102,12 +109,17 @@ public class DataWriter{
         
         //CHECK IF DONE
         System.out.println("File written successfully.");
+        System.out.println("TOTAL BYTES WRITTEN: " + writeCounter);
+
+        int totalBytes = (int)file.length();
+        System.out.println("LENGTH OF FILE: " + totalBytes);
     }
 
     public void WriteToFile(String str){
         //CHECK BITSTRINGS
         //System.out.println(str);
-        
+        writeCounter++;
+
         int num = 0;
         for(int i=0; i<str.length(); i++){
             if(str.charAt(i) == '1'){

@@ -11,7 +11,7 @@ public class RecreateImage{
         image = new BufferedImage(row, col, BufferedImage.TYPE_INT_ARGB);
     }
 
-    public void recreate(Node root, byte[] byteArr){
+    public BufferedImage recreate(Node root, byte[] fileContent){
         //image.setRGB(int x, int y, int rgb);
 
         //convert byte array to string
@@ -20,13 +20,19 @@ public class RecreateImage{
         String str = "";
         int strTracker = 0;
 
+        for(int i=2; i<(fileContent.length); i++){
+            //System.out.println("Converting \t" + i);
+            str = str + (String.format("%8s", Integer.toBinaryString((fileContent[i]) & 0xFF)).replace(' ', '0'));
+        }
+        System.out.println("Done Creating String");
+
         for(int i=0; i<row; i++){
             for(int j=0; j<col; j++){
                 while((node.getLeft() != null) && (node.getRight() != null)){
-                    if(str.charAt(strTracker) == 1){
+                    if(str.charAt(strTracker) == '1'){
                         node = node.getLeft();
                     }
-                    else if(str.charAt(strTracker) == 0){
+                    else if(str.charAt(strTracker) == '0'){
                         node = node.getRight();
                     }
                     strTracker++;
@@ -34,5 +40,7 @@ public class RecreateImage{
                 image.setRGB(i, j, node.getKey());
             }
         }
+
+        return image;
     }
 }

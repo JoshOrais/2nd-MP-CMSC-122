@@ -1,4 +1,5 @@
 import java.io.*;
+import java.awt.image.*;
 
 public class Decompressor{
     // private DeserializeTree deserialize;
@@ -6,8 +7,9 @@ public class Decompressor{
     private RecreateImage recreateImage;
     private File file;
     private FileInputStream fileInputStream;
+    private BufferedImage bufferedImage = null;
 
-    public void decompress(String fileName, Node root){
+    public BufferedImage decompress(String fileName, Node root){
         //int row=0, col=0;
         int[] dimension = new int[2];
         file = new File(fileName);
@@ -15,10 +17,14 @@ public class Decompressor{
             fileInputStream = new FileInputStream(file);
             byte[] fileContent = new byte[(int)file.length()];
             fileInputStream.read(fileContent);
+            System.out.println("Contents Read");
 
             dimension = readDimensions.read(fileContent);
+            System.out.println("Dimensions Read");
+
             recreateImage = new RecreateImage(dimension[0], dimension[1]);
-            recreateImage.recreate(root, fileContent);
+            bufferedImage = recreateImage.recreate(root, fileContent);
+            System.out.println("Image Recreated");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -34,5 +40,7 @@ public class Decompressor{
         System.out.println("ROW: " + dimension[0] + " \tCOLUMN: " + dimension[1]);
         System.out.println("TOTAL BYTES READ: " + (int)file.length());
         System.out.println("Decompression Complete");
+
+        return bufferedImage;
     }
 }

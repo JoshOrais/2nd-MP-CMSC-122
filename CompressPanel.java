@@ -8,6 +8,8 @@ import java.io.*;
 
 public class CompressPanel extends Panel
 {
+	private Compressor compressor = new Compressor();
+
 	public CompressPanel(String action){
 		super(action);
 	}
@@ -41,7 +43,9 @@ public class CompressPanel extends Panel
 			//compress image
 			//assign the compressed image file to 'image'
 			
-			fileManager.saveFile(image);
+			ImageCompressorFrame.treeRoot = compressor.compress(image);
+
+			//fileManager.saveFile(image);
 		}
 	}
 }

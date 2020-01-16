@@ -6,6 +6,7 @@ public class ImageCompressorFrame extends JFrame
 {
 	private CompressPanel compressPanel;
 	private DecompressPanel decompressPanel;
+	public static Node treeRoot = null;
 
 	public ImageCompressorFrame(){
 		super("Image Processor");

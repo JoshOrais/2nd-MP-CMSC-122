@@ -8,6 +8,9 @@ import java.io.*;
 
 public class DecompressPanel extends Panel
 {
+	private Decompressor decompressor = new Decompressor();
+	private BufferedImage bufferedImage = null;
+
 	public DecompressPanel(String action){
 		super(action);
 	}
@@ -40,6 +43,7 @@ public class DecompressPanel extends Panel
 
 		} else if(event.getSource() == actionButton){
 			//decompress image
+			bufferedImage = decompressor.decompress("COMPRESSED.data", ImageCompressorFrame.treeRoot);
 		}
 	}
 }

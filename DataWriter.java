@@ -30,21 +30,22 @@ public class DataWriter{
 				file.createNewFile();
             }
 
-            // System.out.print("\n");
+            //CHECK ROW BITSTRING
+            System.out.print("ROW:\n");
             for(int i=3; i>=0; i--){
                 fileOutputStream.write((byte)(row >>> (8*i)));
-                //CHECK ROW BITSTRING
-                // String s1 = String.format("%8s", Integer.toBinaryString(((byte)(row >>> (8*i))) & 0xFF)).replace(' ', '0');
-                // System.out.println(s1);
+
+                String s1 = String.format("%8s", Integer.toBinaryString(((byte)(row >>> (8*i))) & 0xFF)).replace(' ', '0');
+                System.out.println(s1);
             }
+            //CHECK COLUMN BITSTRING
+            System.out.print("COLUMN:\n");
             for(int i=3; i>=0; i--){
                 fileOutputStream.write((byte)(col >>> (8*i)));
-                //CHECK COLUMN BITSTRING
-                // String s1 = String.format("%8s", Integer.toBinaryString(((byte)(col >>> (8*i))) & 0xFF)).replace(' ', '0');
-                // System.out.println(s1);
+                String s1 = String.format("%8s", Integer.toBinaryString(((byte)(col >>> (8*i))) & 0xFF)).replace(' ', '0');
+                System.out.println(s1);
             }
-            // System.out.print("\n");
-
+            System.out.print("\n");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,13 +61,14 @@ public class DataWriter{
         
         //READ FOR CHECKING
         System.out.println("ROW: " + pixelArr.length + " \t\tCOLUMN: " + pixelArr[0].length);
-        System.out.println("UNIQUE NODES: " + uniqueArr.length + " \tNO.OF PATHS: " + pathArr.length + "\n");
+        System.out.println("UNIQUE NODES: " + uniqueArr.length + " \tNO.OF PATHS: " + pathArr.length);
 
         //READ CONTENTS OF PATH ARRAY
         // for(int i=0; i<pathArr.length; i++){
         //    System.out.println("Path: " + pathArr[i].getPath() + " \tNumber of pixels: " + pathArr[i].getValue() + " \tPixel Value: " + pathArr[i].getKey());
         // }
 
+        System.out.println("\nCONTENT:");
         for(int i=0; i<row; i++){
             for(int j=0; j<col; j++){
                 //CHECK UPDATES
@@ -108,7 +110,7 @@ public class DataWriter{
         }
         
         //CHECK IF DONE
-        System.out.println("File written successfully.");
+        System.out.println("\nFile written successfully.");
         System.out.println("TOTAL BYTES WRITTEN: " + writeCounter);
 
         int totalBytes = (int)file.length();
@@ -119,6 +121,9 @@ public class DataWriter{
         //CHECK BITSTRINGS
         //System.out.println(str);
         writeCounter++;
+
+        //CHECK IMAGE BITSTRING
+        System.out.println(str);
 
         int num = 0;
         for(int i=0; i<str.length(); i++){

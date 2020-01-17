@@ -5,7 +5,7 @@ import java.awt.image.*;
 public class Tester{
     private Compressor compressor = new Compressor();
     private Decompressor decompressor = new Decompressor();
-    private String fileName = "RAY.BMP";
+    private String fileName = "rbg.png";
 	private File file;
     private Node root = new Node();
     private Scanner scan = new Scanner(System.in);

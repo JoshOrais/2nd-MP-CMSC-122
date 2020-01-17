@@ -17,10 +17,10 @@ public class Decompressor{
             fileInputStream = new FileInputStream(file);
             byte[] fileContent = new byte[(int)file.length()];
             fileInputStream.read(fileContent);
-            System.out.println("Contents Read");
+            System.out.println("All Contents Read");
 
             dimension = readDimensions.read(fileContent);
-            System.out.println("Dimensions Read");
+            System.out.println("Assigned values for dimensions");
 
             recreateImage = new RecreateImage(dimension[0], dimension[1]);
             bufferedImage = recreateImage.recreate(root, fileContent);
